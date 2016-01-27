@@ -2,9 +2,14 @@ require 'rails_helper'
 
 describe ExampleUser do
 
-	it "can add a new example user" do
-		u = create( :my_dad )
-		expect( ExampleUser.count ).to be 1
+	context "add normal user" do
+		before :each do
+			create( :my_dad )
+		end
+
+		it "can add a new example user" do	
+			expect( ExampleUser.count ).to be 1
+		end
 	end
 
 	it "can add a random user but user will be unavailable" do
