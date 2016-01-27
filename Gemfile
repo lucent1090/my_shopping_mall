@@ -40,6 +40,8 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'faker'
   gem 'fuubar'
+  gem 'guard-rspec', require: false
+  gem 'spring-commands-rspec'
 end
 
 group :development do
