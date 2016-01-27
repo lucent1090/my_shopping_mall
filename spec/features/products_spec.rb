@@ -1,7 +1,17 @@
 require 'rails_helper'
 
 feature "Products", type: :feature do
-  scenario "add a new product" do
+  
+  scenario "redirect to user sign in page if not sign in" do
+    visit products_path
+    click_link "New"
+    expect(current_path).to eq new_user_session_path
+  end
+
+  scenario "add a new product if user sign in" do
+
+    login_as( create( :fake_user ) )
+
     visit products_path
     click_link "New"
     expect(current_path).to eq new_product_path
@@ -15,4 +25,5 @@ feature "Products", type: :feature do
     expect(current_path).to eq products_path
     expect(page).to have_content "成功新增商品!"
   end
+
 end
